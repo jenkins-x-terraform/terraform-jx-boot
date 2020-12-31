@@ -26,9 +26,6 @@ resource "helm_release" "jx-git-operator" {
     value = var.jx_bot_token
   }
 
-  lifecycle {
-    ignore_changes = all
-  }
 }
 
 module "jx-health" {
