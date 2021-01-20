@@ -15,3 +15,8 @@ variable "terraform_drift_secret_map" {
   default     = {}
   description = "Map of environment secrets to pass to Terraform drift health check"
 }
+variable "job_secret_env_vars" {
+  type        = map(string)
+  default     = {}
+  description = "Map of environment secrets to set on git operator boot jobs"
+}

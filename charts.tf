@@ -25,7 +25,13 @@ resource "helm_release" "jx-git-operator" {
     name  = "password"
     value = var.jx_bot_token
   }
-
+  dynamic "set_sensitive" {
+    for_each = var.job_secret_env_vars
+    content {
+      name  = "jxBootJobEnvVarSecrets.${set_sensitive.key}"
+      value = set_sensitive.value
+    }
+  }
 }
 
 module "jx-health" {
