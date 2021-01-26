@@ -20,3 +20,8 @@ variable "job_secret_env_vars" {
   default     = {}
   description = "Map of environment secrets to set on git operator boot jobs"
 }
+variable "install_vault" {
+  type        = bool
+  default     = false
+  description = "Flag to indicate whether to install Hashicorp Vault charts"
+}
