@@ -25,3 +25,8 @@ variable "install_vault" {
   default     = false
   description = "Flag to indicate whether to install Hashicorp Vault charts"
 }
+variable "operator_annotations" {
+  type        = map(string)
+  default     = {}
+  description = "Annotations to apply to jx git operator chart"
+}

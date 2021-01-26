@@ -32,4 +32,11 @@ resource "helm_release" "jx-git-operator" {
       value = set_sensitive.value
     }
   }
+  dynamic "set" {
+    for_each = var.operator_annotations
+    content {
+      name  = "bootServiceAccount.annotations.${set.key}"
+      value = set.value
+    }
+  }
 }
