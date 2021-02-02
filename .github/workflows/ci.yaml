@@ -1,0 +1,27 @@
+name: CI checks
+
+
+on:
+  push:
+    branches-ignore:
+    - main
+    - master
+
+# allow manual triggering
+  workflow_dispatch: {}
+  
+jobs:
+  pr:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      
+    - uses: hashicorp/setup-terraform@v1
+
+    - run: terraform init
+      
+    - run: terraform fmt -check -diff -recursive
+
+    - name: Lint Terraform
+      uses: actionshub/terraform-lint@main
