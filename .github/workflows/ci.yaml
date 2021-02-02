@@ -1,6 +1,5 @@
 name: CI checks
 
-
 on:
   push:
     branches-ignore:
@@ -20,7 +19,7 @@ jobs:
     - uses: hashicorp/setup-terraform@v1
 
     - run: terraform init
-      
+    - run: terraform validate
     - run: terraform fmt -check -diff -recursive
 
     - name: Lint Terraform
